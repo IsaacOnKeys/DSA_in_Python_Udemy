@@ -1,0 +1,47 @@
+# best case : Omega
+# average case: Theta
+# Worst Case: Omicron
+
+-----------
+Simplifying runtime: 
+1st, drop constants
+2nd, drop non-dominants
+
+----------
+- Constant = O(1)
+- logarithmic time (O(log n)):
+2^3 == 8, so: Log_2 3 = 8
+same as saying, 2, to the what power, equals 8?
+Or how many times do you need to divide 8 by 2 to get down to one item.
+- linear = O(n)
+-- log-linear or quasi-linear: O(nlog n)
+- quadratic time = O(n^2)
+
+BRUTE FORCE:
+exponential time = O(k^n)
+Factorial time = O(!n)
+
+--------
+Different terms for inputs:
+GOTCHA concept!
+It means you must use different variables for different input sizes in a complexity formula when they’re independent.
+
+Example: 
+def myfunc(a,b):
+    for i in range(a):
+        print(i)
+    for j in range(b):
+        print(j)
+Cannot simplify to O(n), beacause we have 2 inputs that could = n.
+So instead of forcing everything into one n, you write things like O(n + m) or O(V + E) to show which part of the input each term depends on.
+
+Greater concept:
+This is a simplified way of saying that each part of a program, inside and outside of a function should be evaluated separated, and then combined to get the runtime (depending on the the execution path).
+
+
+FOR INTERVIEWS: you must be able to recite space and time complexity for algos and data structures!!!!! FLASHCARDS?!?!?!
+https://www.bigocheatsheet.com/
+
+----------
+Concepts:
+aliasing bug: (two aliases sharing the same mutable object / shared mutable state)
