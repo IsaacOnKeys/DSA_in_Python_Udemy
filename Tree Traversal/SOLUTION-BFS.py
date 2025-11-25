@@ -30,8 +30,10 @@ class BinarySearchTree:
                 temp = temp.right
 
     def contains(self, value):
+        if self.root is None:
+            return False
         temp = self.root
-        while (temp is not None):
+        while (temp):
             if value < temp.value:
                 temp = temp.left
             elif value > temp.value:
@@ -39,18 +41,42 @@ class BinarySearchTree:
             else:
                 return True
         return False
+    
+   
+    # YOU CAN ALSO WRITE BFS WITH A QUEUE INSTEAD OF LIST
+    # (TECHNICALLY THIS IS A BETTER SOLUTION)
+    #
+    # def BFS(self):
+    #     current_node = self.root
+    #     queue = Queue()
+    #     results = []
+    #     queue.put(current_node)
 
-    def __r_contains(self, current_node, value):
-        if current_node == None:
-            return False
-        if current_node.value == value:
-            True
-        if value < current_node.value:
-            return self.__r_contains(current_node.left, value)
-        if value > current_node.value:
-            return self.__r_contains(current_node.right, value)
-    def r_contains(self, value):
-        return self.__r_contains(self.root, value)
+    #     while not queue.empty():
+    #         current_node = queue.get()
+    #         results.append(current_node.value)
+    #         if current_node.left is not None:
+    #             queue.put(current_node.left)
+    #         if current_node.right is not None:
+    #             queue.put(current_node.right)
+    #     return results
+                
+    
+    def BFS(self):
+        current_node = self.root
+        queue = []
+        results = []
+        queue.append(current_node)
+
+        while len(queue) > 0:
+            current_node = queue.pop(0)
+            results.append(current_node.value)
+            if current_node.left is not None:
+                queue.append(current_node.left)
+            if current_node.right is not None:
+                queue.append(current_node.right)
+        return results
+
 
 
 
@@ -64,22 +90,23 @@ my_tree.insert(27)
 my_tree.insert(52)
 my_tree.insert(82)
 
-print('BST Contains 27:')
-print(my_tree.r_contains(27))
+print(my_tree.BFS())
 
-print('\nBST Contains 17:')
-print(my_tree.r_contains(17))
-                
 
 
 """
     EXPECTED OUTPUT:
     ----------------
-    BST Contains 27:
-    True
+    [47, 21, 76, 18, 27, 52, 82]
 
-    BST Contains 17:
-    False
+ """
 
-"""
 
+
+
+
+                
+
+
+
+ 
