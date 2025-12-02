@@ -100,7 +100,7 @@ class BinarySearchTree:
                     current_node.right, minimum_value
                 )
 
-            return current_node
+        return current_node
 
     def delete_node(self, value):
         self.__delete_node(self.root, value)
